@@ -188,6 +188,9 @@ var actions = {
 		cb(context);
 	},['addFamMembers'](sessionId,context,cb){
 		cb(context);
+	},['getId'](sessionId,context,cb){
+		context.meid=context._fbid_;
+		cb(context);
 	}
 }
 
