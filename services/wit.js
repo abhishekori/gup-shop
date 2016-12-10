@@ -64,7 +64,9 @@ var actions = {
 			var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
 			request(pingUrl,function(error, response, body){
 				//console.log(body)
-				context.familyMembers=[{name:body.first_name,fbid:context._fbid_}];
+				context.familyMembers=[];
+				var result=JSON.parse(body)
+				context.familyMembers.push({name:result.first_name,fbid:context._fbid_});
 			});
 
 		}
