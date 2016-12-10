@@ -68,7 +68,7 @@ app.post('/webhooks', function (req, res) {
         }
       }
     };
-    FB.newMessage(context._fbid_,"the first item",atts);
+    FB.newMessage(entry.sender.id,"the first item",atts);
   }
   if (entry && entry.message) {
 
