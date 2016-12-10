@@ -1,0 +1,29 @@
+
+  product:{
+  name:"hello",
+  details:{
+
+  },
+  x:"",
+  y:"",
+  imageUrl:"",
+  location:""
+  }
+
+
+
+          list:{
+          userId:"",
+          currList:[],
+          sortedList:[],
+          currIndex:"",
+          quantList:[]
+          total:""
+          }
+
+
+
+
+
+
+

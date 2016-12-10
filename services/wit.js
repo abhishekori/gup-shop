@@ -128,10 +128,12 @@ var actions = {
 	},['addToList'](sessionId,context,cb){
 		context.listProducts=context.listItems;
 		console.log(context.listProducts);
-		FB.newMessage(context._fbid_,context.listProducts+"" );
+
+		//FB.newMessage(context._fbid_,context.listProducts+"" );
 		cb(context);
 	},['showList'](sessionId,context,cb){
-		context.listProducts="blah blah blah";
+
+		context.listProducts="blah blah blah"+context._fbid_;
 		cb(context);
 	}
 }
