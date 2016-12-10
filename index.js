@@ -63,8 +63,10 @@ app.post('/webhooks', function (req, res) {
         request('https://api.qrserver.com/v1/read-qr-code/?fileurl='+data[0].payload.url, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             console.log(body) // Show the HTML for the Google homepage.
-            FB.newMessage(sender, body)
+            FB.newMessage(entry.sender.id, body)
           }
+        },function(){
+
         });
 
       }
