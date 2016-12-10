@@ -94,6 +94,7 @@ var actions = {
 		//	console.log("body "+body);
         //
 		//});
+		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		var url;
