@@ -40,7 +40,8 @@ app.post('/webhooks', function (req, res) {
   // IS THE ENTRY A VALID MESSAGE?
   let messaging_events = req.body.entry[0].messaging[0].postback;
   console.log("messaging events "+messaging_events);
-  if(messaging_events.payload){
+
+  if(messaging_events){
       var url;
 
     request(url, function (error, response, body) {
