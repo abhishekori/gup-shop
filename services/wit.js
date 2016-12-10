@@ -59,6 +59,8 @@ var actions = {
 		}
 		if(productQuantity){
 			context.productQuantity=productQuantity;
+		}else{
+			context.productQuantity=0;
 		}
 		if(!context.familyMembers){
 			var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
@@ -108,7 +110,7 @@ var actions = {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
 		var url;
-		//request.post(url,{form:{item:context.item}},function(err,httpResponse,body){
+		//request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
 		//	console.log("addItem");
 		//	console.log("err "+err);
 		//	console.log("httpResponse "+httpResponse);
@@ -212,6 +214,7 @@ var actions = {
 			if(context.familyMembers[i].fbid!=context._fbid_)
 			{
 				FB.newMessage(context.familyMembers[i].fbid,context.familyMembers[0].name+" has asked if you want to add any items to shopping list");
+				FB.newMessage(context.familyMembers[i].fbid,"reply by saying @"+context.familyMembers[0].name+" deo,eggs,olive oil");
 
 			}
 

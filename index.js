@@ -44,12 +44,13 @@ app.post('/webhooks', function (req, res) {
   if(messaging_events){
       var url;
 
-    //request(url, function (error, response, body) {
-    //  if (!error && response.statusCode == 200) {
-    //    console.log(body) // Show the HTML for the Google homepage.
-    //
-    //  }
-    //});
+    //request.post(url,{form:{userId:context._fbid_,itemId:messaging_events}},function(err,httpResponse,body){
+    //  //	console.log("addItem");
+      //	console.log("err "+err);
+      //	console.log("httpResponse "+httpResponse);
+      //	console.log("body "+body);
+      //
+      //});
     var atts= {
       "attachment": {
         "type": "template",
