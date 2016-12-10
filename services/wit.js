@@ -50,13 +50,16 @@ var actions = {
 		var productQuantity = firstEntityValue(entities,"productQuantity");
 		var name=firstEntityValue(entities,"name");
 		var fbId = firstEntityValue(entities,"fbId");
-		context.familyMembers=[];
+
 
 		if(item){
 			context.item=item;
 		}
 		if(productQuantity){
 			context.productQuantity=productQuantity;
+		}
+		if(!context.familyMembers){
+			context.familyMembers=[];
 		}
 		if(name){
 			context.name=name;
