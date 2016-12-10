@@ -62,8 +62,9 @@ var actions = {
 
 	error(sessionId, context, error) {
 		console.log(error.message)
-	},['getMall'](sessioId,context,cb){
+	},['getMall'](sessionId,context,cb){
 		context.mallName=context.lat+context.long;
+		console.log("mall name is"+context.mallName);
 
 		cb(context);
 
