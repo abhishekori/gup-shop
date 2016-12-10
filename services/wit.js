@@ -209,7 +209,12 @@ var actions = {
 		console.log(context.familyMembers);
 
 		for(var i=0;i<fam.length;i++){
-			FB.newMessage(context.familyMembers[i].fbid,context.familyMembers[0].name+" has asked if you want to add any items to shopping list");
+			if(context.familyMembers[i].fbid!=context._fbid_)
+			{
+				FB.newMessage(context.familyMembers[i].fbid,context.familyMembers[0].name+" has asked if you want to add any items to shopping list");
+
+			}
+
 		}
 
 		cb(context);
