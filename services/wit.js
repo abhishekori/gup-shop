@@ -95,6 +95,7 @@ var actions = {
         //
 		//});
 		context.listProducts="bread,butter,bun";
+		FB.newMessage(context._fbid_, context.listProducts+" is the list")
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
@@ -156,6 +157,8 @@ var actions = {
 	},['showList'](sessionId,context,cb){
 
 		//context.listProducts="blah blah blah"+context._fbid_;
+		context.listProducts="bread,butter,bun";
+		FB.newMessage(context._fbid_, context.listProducts+" is the list")
 		cb(context);
 	},['familyAddToList'](sessionId,context,cb){
 
