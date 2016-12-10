@@ -68,10 +68,6 @@ var actions = {
 
 	error(sessionId, context, error) {
 		console.log(error.message)
-	},
-	['locateItem'](sessionId,context,cb){
-
-		cb(context)
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		context.mallName="mantri"+context.lat+context.long;
@@ -116,6 +112,8 @@ var actions = {
 	['findStore'](sessionId,context,cb){
 		context.storeLocation=context.storeName+" location";
 		FB.newMessage(context._fbid_, "its present in "+context.storeLocation);
+	},[getDeals](sessionId,context,cb){
+		context.dealsResult=["","","",""];
 	}
 }
 
