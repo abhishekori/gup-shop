@@ -127,7 +127,7 @@ var actions = {
 		cb(context);
 	},['addToList'](sessionId,context,cb){
 		context.listProducts=context.listItems;
-		FB.newMessage(context._fbid_,context.listProducts );
+		FB.newMessage(context._fbid_,"yea" );
 		cb(context);
 	},['showList'](sessionId,context,cb){
 		context.listProducts="blah blah blah";
