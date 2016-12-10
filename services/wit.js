@@ -50,8 +50,10 @@ var actions = {
 		var productName=firstEntityValue(entities,"productName");
 		var storeName=firstEntityValue(entities,"storeName");
 		var listItems=firstEntityValue(entities,"listItems");
+		console.log("the list got "+listItems);
 		if(listItems){
 			context.listItems=listItems.split(",");
+			console.log("the array is")
 			console.log(listItems);
 		}
 
