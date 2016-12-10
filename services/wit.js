@@ -1,29 +1,29 @@
 'use strict'
 
-var Config = require('../config')
-var FB = require('../connectors/facebook')
-var Wit = require('node-wit').Wit
-var request = require('request')
+var Config = require('../config');
+var FB = require('../connectors/facebook');
+var Wit = require('node-wit').Wit;
+var request = require('request');
 
 
 var firstEntityValue = function (entities, entity) {
 	var val = entities && entities[entity] &&
 		Array.isArray(entities[entity]) &&
 		entities[entity].length > 0 &&
-		entities[entity][0].value
+		entities[entity][0].value;
 
 	if (!val) {
 		return null
 	}
 	return typeof val === 'object' ? val.value : val
-}
+};
 
 
 var actions = {
 	say (sessionId, context, message, cb) {
 		// Bot testing mode, run cb() and return
 		if (require.main === module) {
-			cb()
+			cb();
 			return
 		}
 
@@ -44,10 +44,17 @@ var actions = {
 	},
 
 	merge(sessionId, context, entities, message, cb) {
+		var lat,long;
+		lat=firstEntityValue(entities,"lat");
+		long = firstEntityValue(entities,"long");
 
 		var findItem = firstEntityValue(entities,"findItem");
-		if(findItem){
-			context.findItem=findItem;
+		if(lat){
+			context.lat=lat;
+
+		}
+		if(long){
+			context.long=long;
 		}
 
 		cb(context)
@@ -55,6 +62,11 @@ var actions = {
 
 	error(sessionId, context, error) {
 		console.log(error.message)
+	},['getMall'](sessioId,context,cb){
+		context.mallName=context.lat+context.long;
+
+		cb(context);
+
 	},
 	['locateItem'](sessionId,context,cb){
 

@@ -45,9 +45,14 @@ app.post('/webhooks', function (req, res) {
       var data =entry.message.attachments;
       if(data[0].type=='location')
       {
+        var lat=data[0].payload.coordinates.lat;
+        var long=data[0].payload.coordinates.long;
 
         console.log("lat: "+data[0].payload.coordinates.lat);
         console.log("long: "+data[0].payload.coordinates.long);
+        Bot.read(entry.sender.id, lat+","+long, function (sender, reply) {
+          FB.newMessage(sender, reply)
+        })
       }
       if(data[0].type=="image"){
         console.log("img url: "+data[0].payload.url);
@@ -56,10 +61,10 @@ app.post('/webhooks', function (req, res) {
       FB.newMessage(entry.sender.id, "That's interesting!")
     } else {
       // SEND TO BOT FOR PROCESSING
-      //Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-      //  FB.newMessage(sender, reply)
-      //})
-      FB.newMessage(entry.sender.id, entry.message.text)
+      Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
+        FB.newMessage(sender, reply)
+      })
+     // FB.newMessage(entry.sender.id, entry.message.text)
     }
   }
 
