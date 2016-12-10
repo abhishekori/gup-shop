@@ -38,7 +38,7 @@ app.get('/webhooks', function (req, res) {
 app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
-  let messaging_events = req.body.entry[0]
+  let messaging_events = req.body.entry[0].messaging[0].postback;
   console.log(messaging_events);
   if (entry && entry.message) {
 
