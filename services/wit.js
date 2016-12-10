@@ -49,6 +49,7 @@ var actions = {
 		long = firstEntityValue(entities,"long");
 
 		var findItem = firstEntityValue(entities,"findItem");
+		console.log("merge fn "+lat+long);
 		if(lat){
 			context.lat=lat;
 
