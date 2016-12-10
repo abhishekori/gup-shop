@@ -130,7 +130,7 @@ var actions = {
 		};
 		context.mallName="mantri"+context.lat+context.long;
 		FB.newMessage(context._fbid_,"the first item",atts);
-		FB.newMessage(context._fbid_,"please send the quantity you picked up i ll update your ");
+		//FB.newMessage(context._fbid_,"please send the quantity you picked up i ll update your ");
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
