@@ -39,10 +39,12 @@ app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
   if (entry && entry.message) {
+    console.log(entry.message);
     if (entry.message.attachments) {
       // NOT SMART ENOUGH FOR ATTACHMENTS YET
 
       var data =entry.message.attachments;
+
       if(data[0].type=='location')
       {
         var lat=data[0].payload.coordinates.lat;
