@@ -61,8 +61,12 @@ app.post('/webhooks', function (req, res) {
             "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
             "buttons": [{
               "type": "postback",
-              "title": "Postback",
-              "payload": "Payload for first element in a generic bubble",
+              "title": "done",
+              "payload": 1,
+            },{
+              type:"postback",
+              "title":"skip",
+              payload:0
             }],
           }]
         }

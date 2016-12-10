@@ -95,7 +95,7 @@ var actions = {
         //
 		//});
 		context.listProducts="bread,butter,bun";
-		FB.newMessage(context._fbid_,context.item+" added. The list is " +context.listProducts);
+		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
@@ -117,8 +117,12 @@ var actions = {
 						"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 						"buttons": [{
 							"type": "postback",
-							"title": "Postback",
-							"payload": "Payload for first element in a generic bubble",
+							"title": "done",
+							"payload": 1,
+						},{
+							type:"postback",
+							"title":"skip",
+							payload:0
 						}],
 					}]
 				}
@@ -126,6 +130,7 @@ var actions = {
 		};
 		context.mallName="mantri"+context.lat+context.long;
 		FB.newMessage(context._fbid_,"the first item",atts);
+		FB.newMessage(context._fbid_,"please send the quantity you picked up i ll update your ");
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
