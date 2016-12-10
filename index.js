@@ -33,9 +33,10 @@ app.post('/webhooks', function (req, res) {
             FB.newMessage(entry.sender.id, "That's interesting!")
         } else {
             // SEND TO BOT FOR PROCESSING
-            Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-                FB.newMessage(sender, reply)
-            })
+            //Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
+            //    FB.newMessage(sender, reply)
+            //})
+            FB.newMessage(sender, "your message "+entry.message.text);
         }
     }
 
