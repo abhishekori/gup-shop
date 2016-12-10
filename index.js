@@ -5,7 +5,7 @@ app.get("/",function(req,res){
 	res.send("your app is running");
 });
 app.get('/webhooks', function (req, res) {
-    if (req.query['hub.verify_token'] === Config.FB_VERIFY_TOKEN) {
+    if (req.query['hub.verify_token'] === "gupshop") {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
