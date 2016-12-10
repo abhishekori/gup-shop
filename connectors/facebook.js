@@ -66,7 +66,7 @@ var newMessage = function (recipientId, msg, atts, cb) {
 			attachment: {
 				"type": "image",
 				"payload": {
-					"url": msg
+					"url": "http://www.venturesity.com/v1/images/venturesity-logo-white.png"
 				}
 			}
 		}

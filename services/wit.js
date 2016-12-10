@@ -76,7 +76,8 @@ var actions = {
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
-		context.stores=[{},{},{}];
+		context.stores=["spar","bata","mcd"];
+		FB.newMessage(context._fbid_, context.mallName,true);
 	}
 }
 
