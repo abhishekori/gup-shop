@@ -48,12 +48,21 @@ var actions = {
 		var quantity=firstEntityValue(entities,"quantity");
 		var item = firstEntityValue(entities,"item");
 		var productQuantity = firstEntityValue(entities,"productQuantity");
+		var name=firstEntityValue(entities,"name");
+		var fbId = firstEntityValue(entities,"fbId");
+		context.familyMembers=[];
 
 		if(item){
 			context.item=item;
 		}
 		if(productQuantity){
 			context.productQuantity=productQuantity;
+		}
+		if(name){
+			context.name=name;
+		}
+		if(fbId){
+			context.fbid=fbId;
 		}
 		console.log("the list got "+listItems);
 		if(listItems){
@@ -187,6 +196,8 @@ var actions = {
 
 		cb(context);
 	},['addFamMembers'](sessionId,context,cb){
+			context.familyMembers.push({name:context.name,fbid:context.fbid});
+		console.log(context.familyMembers);
 		cb(context);
 	},['getId'](sessionId,context,cb){
 		context.meid=context._fbid_;
