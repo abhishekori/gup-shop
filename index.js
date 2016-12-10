@@ -63,9 +63,9 @@ app.post('/webhooks', function (req, res) {
     } else {
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
-       // FB.newMessage(sender, reply)
+        FB.newMessage(sender, reply)
       })
-     // FB.newMessage(entry.sender.id, entry.message.text)
+    // FB.newMessage(entry.sender.id, entry.message.text)
     }
   }
 
