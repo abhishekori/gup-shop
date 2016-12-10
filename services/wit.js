@@ -49,10 +49,20 @@ var actions = {
 		var productQuantity = firstEntityValue(entities,"productQuantity");
 		var name=firstEntityValue(entities,"name");
 		var fbId = firstEntityValue(entities,"fbId");
+		var reqItems=firstEntityValue(entities,"reqItems");
+		var reqName = firstEntityValue(entities,"reqName");
 		//var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
 		//request(pingUrl,function(error, response, body){
 		//	console.log(body)
 		//});
+
+		if(reqName){
+			context.reqName=reqName;
+		}
+		if(reqItems){
+			context.reqItems=reqItems;
+
+		}
 
 		if(item){
 			context.item=item;
@@ -119,7 +129,7 @@ var actions = {
 		//	console.log("body "+body);
         //
 		//});
-		context.listProducts="bread,butter,bun";
+		context.itemsList="bread,butter,bun";
 		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
 		cb(context);
 	},['getMall'](sessionId,context,cb){
@@ -205,7 +215,7 @@ var actions = {
 	},['showList'](sessionId,context,cb){
 
 		//context.listProducts="blah blah blah"+context._fbid_;
-		context.listProducts="bread,butter,bun";
+		context.itemsList="bread,butter,bun";
 		FB.newMessage(context._fbid_, context.listProducts+" is the list")
 		cb(context);
 	},['familyAddToList'](sessionId,context,cb){
@@ -233,6 +243,20 @@ var actions = {
 	},['removeAllFam'](sessionId,context,cb){
 		context.familyMembers=[];
 		cb(context);
+	},['addItemsToReqList'](sessionId,context,cb){
+		var url;
+		//request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
+		//	console.log("addItem");
+		//	console.log("err "+err);
+		//	console.log("httpResponse "+httpResponse);
+		//	console.log("body "+body);
+		//
+		//});
+		context.itemsList="bread,butter,bun";
+		FB.newMessage(context._fbid_,context.reqItems+" added. The list is " +context.itemsList);
+
+
+
 	}
 }
 
