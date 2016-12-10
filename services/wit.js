@@ -60,6 +60,7 @@ var actions = {
 
 		cb(context)
 	},['getMall'](sessionId,context,cb){
+		context.mallName="mantri";
 		cb(context);
 	}
 }
