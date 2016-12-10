@@ -49,10 +49,10 @@ var actions = {
 		var productQuantity = firstEntityValue(entities,"productQuantity");
 		var name=firstEntityValue(entities,"name");
 		var fbId = firstEntityValue(entities,"fbId");
-		var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
-		request(pingUrl,function(error, response, body){
-			console.log(body)
-		});
+		//var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
+		//request(pingUrl,function(error, response, body){
+		//	console.log(body)
+		//});
 
 		if(item){
 			context.item=item;
