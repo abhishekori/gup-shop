@@ -126,7 +126,7 @@ var actions = {
 		context.dealsResult=["","","",""];
 		cb(context);
 	},['addToList'](sessionId,context,cb){
-		context.listProducts=context.listItems.toSource();
+		context.listProducts=context.listItems.toString();
 		console.log(context.listProducts);
 		//FB.newMessage(context._fbid_,"yea" );
 		cb(context);
