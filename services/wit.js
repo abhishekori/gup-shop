@@ -60,7 +60,7 @@ var actions = {
 		if(productQuantity){
 			context.productQuantity=productQuantity;
 		}
-		if(!context.familyMembers){
+		if(context.familyMembers==null){
 			var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
 			request(pingUrl,function(error, response, body){
 				//console.log(body)
