@@ -207,7 +207,7 @@ var actions = {
 	},['familyAddToList'](sessionId,context,cb){
 
 		for(var i=0;i<context.familyMembers.length;i++){
-			FB.newMessage(context._fbid_,"")
+			FB.newMessage(context._fbid_,context.familyMembers[0].name+" has asked if you want to add any items to shopping list");
 		}
 
 		cb(context);
