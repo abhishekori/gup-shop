@@ -46,7 +46,7 @@ var actions = {
 		var storeName=firstEntityValue(entities,"storeName");
 		var listItems=firstEntityValue(entities,"listItems");
 		var quantity=firstEntityValue(entities,"quantity");
-		var item = firstEntityValue(entities,"quantity");
+		var item = firstEntityValue(entities,"item");
 		var productQuantity = firstEntityValue(entities,"productQuantity");
 
 		if(item){
