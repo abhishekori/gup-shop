@@ -48,7 +48,7 @@ var actions = {
 		var lat = firstEntityValue(entities,"lat");
 		var long = firstEntityValue(entities,"long");
 		var productName=firstEntityValue(entities,"productName");
-
+		var storeName=firstEntityValue(entities,"storeName");
 
 		if(lat){
 			context.lat=lat;
@@ -58,6 +58,9 @@ var actions = {
 		}
 		if(productName){
 			context.long=productName;
+		}
+		if(storeName){
+			context.storeName=storeName;
 		}
 
 		cb(context)
@@ -109,6 +112,10 @@ var actions = {
 			}
 		};
 		FB.newMessage(context._fbid_, context.mallName,atts);
+	},
+	['findProduct'](sessionId,context,cb){
+		context.storeLocation=context.storeName+" location";
+		FB.newMessage(context._fbid_, "its present in "+context.storeLocation);
 	}
 }
 
