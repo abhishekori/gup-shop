@@ -45,7 +45,8 @@ var actions = {
 
 	merge(sessionId, context, entities, message, cb) {
 
-		var findItem = firstEntityValue(entities,"findItem");
+		var lat = firstEntityValue(entities,"lat");
+		console.log(lat);
 		if(findItem){
 			context.findItem=findItem;
 		}
