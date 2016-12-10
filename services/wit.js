@@ -94,6 +94,7 @@ var actions = {
 		//	console.log("body "+body);
         //
 		//});
+		context.listProducts="bread,butter,bun";
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
@@ -154,7 +155,7 @@ var actions = {
 		cb(context);
 	},['showList'](sessionId,context,cb){
 
-		context.listProducts="blah blah blah"+context._fbid_;
+		//context.listProducts="blah blah blah"+context._fbid_;
 		cb(context);
 	},['familyAddToList'](sessionId,context,cb){
 
