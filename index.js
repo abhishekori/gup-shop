@@ -50,6 +50,7 @@ app.post('/webhooks', function (req, res) {
 
         console.log("lat: "+data[0].payload.coordinates.lat);
         console.log("long: "+data[0].payload.coordinates.long);
+        console.log(lat+","+long);
         Bot.read(entry.sender.id, lat+","+long, function (sender, reply) {
           FB.newMessage(sender, reply)
         })
