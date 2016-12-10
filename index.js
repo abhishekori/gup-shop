@@ -58,6 +58,8 @@ app.post('/webhooks', function (req, res) {
       if(data[0].type=="image"){
 
         console.log("img url: "+data[0].payload.url);
+
+
         //request('https://api.qrserver.com/v1/read-qr-code/?fileurl='+data[0].payload.url, function (error, response, body) {
         //  if (!error && response.statusCode == 200) {
         //    console.log(body) // Show the HTML for the Google homepage.
