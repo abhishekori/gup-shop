@@ -47,6 +47,7 @@ var actions = {
 
 		var lat = firstEntityValue(entities,"lat");
 		var long = firstEntityValue(entities,"long");
+		var productName=firstEntityValue(entities,"productName");
 
 
 		if(lat){
@@ -54,6 +55,9 @@ var actions = {
 		}
 		if(long){
 			context.long=long;
+		}
+		if(productName){
+			context.long=productName;
 		}
 
 		cb(context)
@@ -69,6 +73,8 @@ var actions = {
 		//console.log(entities);
 		context.mallName="mantri"+context.lat+context.long;
 		cb(context);
+	},['findProduct'](sessionId,context,cb){
+		context.stores=[{},{},{}];
 	}
 }
 
