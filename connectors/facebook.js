@@ -62,14 +62,7 @@ var newMessage = function (recipientId, msg, atts, cb) {
 	// }
 
 	if (atts) {
-		var message = {
-			attachment: {
-				"type": "image",
-				"payload": {
-					"url": "http://www.venturesity.com/v1/images/venturesity-logo-white.png"
-				}
-			}
-		}
+		var message = atts;
 	} else {
 		var message = {
 			text: msg

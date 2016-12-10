@@ -77,7 +77,15 @@ var actions = {
 
 	},['findProduct'](sessionId,context,cb){
 		context.stores=["spar","bata","mcd"];
-		FB.newMessage(context._fbid_, context.mallName,true);
+		var atts={
+			attachment: {
+				"type": "image",
+				"payload": {
+					"url": "http://www.venturesity.com/v1/images/venturesity-logo-white.png"
+				}
+			}
+		};
+		FB.newMessage(context._fbid_, context.mallName,atts);
 	}
 }
 
