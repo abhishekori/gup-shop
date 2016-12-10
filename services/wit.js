@@ -68,7 +68,7 @@ var actions = {
 				//console.log(body)
 				context.familyMembers=[];
 				var result=JSON.parse(body)
-				var fname=body.first_name;
+				var fname=JSON.stringify(result.first_name);
 				fname=fname.toLowerCase();
 				context.familyMembers.push({name:fname,fbid:context._fbid_});
 			});
