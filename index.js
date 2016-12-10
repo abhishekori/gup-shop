@@ -44,12 +44,31 @@ app.post('/webhooks', function (req, res) {
   if(messaging_events){
       var url;
 
-    request(url, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body) // Show the HTML for the Google homepage.
-
+    //request(url, function (error, response, body) {
+    //  if (!error && response.statusCode == 200) {
+    //    console.log(body) // Show the HTML for the Google homepage.
+    //
+    //  }
+    //});
+    var atts= {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "generic",
+          "elements": [{
+            "title": "First card",
+            "subtitle": "Element #1 of an hscroll",
+            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+            "buttons": [{
+              "type": "postback",
+              "title": "Postback",
+              "payload": "Payload for first element in a generic bubble",
+            }],
+          }]
+        }
       }
-    });
+    };
+    FB.newMessage(context._fbid_,"the first item",atts);
   }
   if (entry && entry.message) {
 

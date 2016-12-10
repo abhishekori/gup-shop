@@ -100,14 +100,32 @@ var actions = {
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		var url;
-		request(url, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-				console.log(body) // Show the HTML for the Google homepage.
-
+		//request(url, function (error, response, body) {
+		//	if (!error && response.statusCode == 200) {
+		//		console.log(body) // Show the HTML for the Google homepage.
+        //
+		//	}
+		//})
+		var atts= {
+			"attachment": {
+				"type": "template",
+				"payload": {
+					"template_type": "generic",
+					"elements": [{
+						"title": "First card",
+						"subtitle": "Element #1 of an hscroll",
+						"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+						"buttons": [{
+							"type": "postback",
+							"title": "Postback",
+							"payload": "Payload for first element in a generic bubble",
+						}],
+					}]
+				}
 			}
-		})
+		};
 		context.mallName="mantri"+context.lat+context.long;
-		FB.newMessage(context._fbid_, context.mallName)
+		FB.newMessage(context._fbid_,"the first item",atts);
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
