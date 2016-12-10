@@ -17,7 +17,12 @@ app.get('/webhooks', function (req, res) {
     }
     res.send('Error, wrong token')
 });
+app.set('port', (process.env.PORT) || 5000)
+// SPIN UP SERVER
+app.listen(app.get('port'), function () {
 
+    console.log('Running on port', app.get('port'))
+})
 // to send messages to facebook
 app.post('/webhooks', function (req, res) {
     var entry = FB.getMessageEntry(req.body)
@@ -50,9 +55,4 @@ app.post('/webhooks', function (req, res) {
     res.sendStatus(200)
 })
 
-app.set('port', (process.env.PORT) || 5000)
-// SPIN UP SERVER
-app.listen(app.get('port'), function () {
 
-  console.log('Running on port', app.get('port'))
-})
