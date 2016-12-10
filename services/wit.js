@@ -95,7 +95,7 @@ var actions = {
         //
 		//});
 		context.listProducts="bread,butter,bun";
-		FB.newMessage(context._fbid_, context.listProducts+" is the list")
+		FB.newMessage(context._fbid_,context.item+" added. The list is " +context.listProducts);
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
