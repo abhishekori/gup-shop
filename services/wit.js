@@ -32,11 +32,6 @@ var actions = {
 		console.log('WIT HAS A CONTEXT:', context)
 		//console.log("your fb id is "+context._fbid_);
 		FB.newMessage(context._fbid_, message)
-		//if (checkURL(message)) {
-		//	FB.newMessage(context._fbid_, message, true)
-		//} else {
-		//
-		//}
 
 
 		cb()
@@ -50,6 +45,16 @@ var actions = {
 		var productName=firstEntityValue(entities,"productName");
 		var storeName=firstEntityValue(entities,"storeName");
 		var listItems=firstEntityValue(entities,"listItems");
+		var quantity=firstEntityValue(entities,"quantity");
+		var item = firstEntityValue(entities,"quantity");
+		var productQuantity = firstEntityValue(entities,"productQuantity");
+
+		if(item){
+			context.item=item;
+		}
+		if(productQuantity){
+			context.productQuantity=productQuantity;
+		}
 		console.log("the list got "+listItems);
 		if(listItems){
 			context.listItems=listItems.split(",");
@@ -70,23 +75,32 @@ var actions = {
 		if(storeName){
 			context.storeName=storeName;
 		}
+		if(listItems){
+			context.listItems=listItems;
+		}
+
 
 		cb(context)
 	},
 
 	error(sessionId, context, error) {
 		console.log(error.message)
+	},['addItem'](sessionId,context,cb){
+		var url;
+		//request.post(url,{form:{item:context.item}},function(err,httpResponse,body){
+		//	console.log("addItem");
+		//	console.log("err "+err);
+		//	console.log("httpResponse "+httpResponse);
+		//	console.log("body "+body);
+        //
+		//});
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		var url;
 		request(url, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
-				//var atts={
-				//	"attachment":{
-				//		"type"
-				//	}
-				//}
+
 			}
 		})
 		context.mallName="mantri"+context.lat+context.long;

@@ -39,7 +39,17 @@ app.post('/webhooks', function (req, res) {
   var entry = FB.getMessageEntry(req.body)
   // IS THE ENTRY A VALID MESSAGE?
   let messaging_events = req.body.entry[0].messaging[0].postback;
-  console.log(messaging_events);
+  console.log("messaging events "+messaging_events);
+  if(messaging_events.payload){
+      var url;
+
+    request(url, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body) // Show the HTML for the Google homepage.
+
+      }
+    });
+  }
   if (entry && entry.message) {
 
     if (entry.message.attachments) {
