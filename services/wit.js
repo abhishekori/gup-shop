@@ -216,7 +216,7 @@ var actions = {
 			if(context.familyMembers[i].fbid!=context._fbid_)
 			{
 				FB.newMessage(context.familyMembers[i].fbid,context.familyMembers[0].name+" has asked if you want to add any items to shopping list");
-				FB.newMessage(context.familyMembers[i].fbid,"reply by saying @"+context.familyMembers[0].name+" deo,eggs,olive oil");
+				FB.newMessage(context.familyMembers[i].fbid,"reply by saying "+context.familyMembers[0].name+" deo,eggs,olive oil");
 
 			}
 
