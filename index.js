@@ -51,11 +51,12 @@ app.post('/webhooks', function (req, res) {
         console.log("lat: "+data[0].payload.coordinates.lat);
         console.log("long: "+data[0].payload.coordinates.long);
         console.log(lat+","+long);
-        Bot.read(entry.sender.id, lat+","+long, function (sender, reply) {
+        Bot.read(entry.sender.id, lat+" "+long, function (sender, reply) {
           FB.newMessage(sender, reply)
         })
       }
       if(data[0].type=="image"){
+
         console.log("img url: "+data[0].payload.url);
       }
 
