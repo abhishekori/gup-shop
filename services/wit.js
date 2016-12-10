@@ -135,6 +135,11 @@ var actions = {
 
 		context.listProducts="blah blah blah"+context._fbid_;
 		cb(context);
+	},['familyAddToList'](sessionId,context,cb){
+
+		cb(context);
+	},['addFamMembers'](sessionId,context,cb){
+		cb(context);
 	}
 }
 
