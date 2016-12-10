@@ -82,11 +82,11 @@ var actions = {
 		request(url, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
-				var atts={
-					"attachment":{
-						"type"
-					}
-				}
+				//var atts={
+				//	"attachment":{
+				//		"type"
+				//	}
+				//}
 			}
 		})
 		context.mallName="mantri"+context.lat+context.long;
