@@ -205,6 +205,9 @@ var actions = {
 	},['getId'](sessionId,context,cb){
 		context.meid=context._fbid_;
 		cb(context);
+	},['removeAllFam'](sessionId,context,cb){
+		context.familyMembers=[];
+		cb(context);
 	}
 }
 
