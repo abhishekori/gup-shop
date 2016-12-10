@@ -58,7 +58,7 @@ app.post('/webhooks', function (req, res) {
         console.log("img url: "+data[0].payload.url);
       }
 
-      FB.newMessage(entry.sender.id, "That's interesting!")
+      //FB.newMessage(entry.sender.id, "That's interesting!")
     } else {
       // SEND TO BOT FOR PROCESSING
       Bot.read(entry.sender.id, entry.message.text, function (sender, reply) {
