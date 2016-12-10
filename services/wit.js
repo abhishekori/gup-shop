@@ -72,7 +72,7 @@ var actions = {
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		context.mallName="mantri"+context.lat+context.long;
-		FB.newMessage(sender._fbid_, context.mallName)
+		FB.newMessage(context._fbid_, context.mallName)
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
