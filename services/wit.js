@@ -5,7 +5,6 @@ var FB = require('../connectors/facebook')
 var Wit = require('node-wit').Wit
 var request = require('request')
 
-
 var firstEntityValue = function (entities, entity) {
 	var val = entities && entities[entity] &&
 		Array.isArray(entities[entity]) &&
@@ -50,7 +49,10 @@ var actions = {
 		var productQuantity = firstEntityValue(entities,"productQuantity");
 		var name=firstEntityValue(entities,"name");
 		var fbId = firstEntityValue(entities,"fbId");
-
+		var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
+		request(pingUrl,function(error, response, body){
+			console.log(body)
+		});
 
 		if(item){
 			context.item=item;
@@ -59,6 +61,10 @@ var actions = {
 			context.productQuantity=productQuantity;
 		}
 		if(!context.familyMembers){
+			var pingUrl="https://graph.facebook.com/v2.6/"+context._fbid_+"?access_token="+Config.FB_PAGE_TOKEN;
+			request(pingUrl,function(error, response, body){
+				console.log(body)
+			});
 			context.familyMembers=[];
 		}
 		if(name){
@@ -196,6 +202,10 @@ var actions = {
 		FB.newMessage(context._fbid_, context.listProducts+" is the list")
 		cb(context);
 	},['familyAddToList'](sessionId,context,cb){
+
+		for(var i=0;i<context.familyMembers.length;i++){
+			FB.newMessage(context._fbid_,"")
+		}
 
 		cb(context);
 	},['addFamMembers'](sessionId,context,cb){
