@@ -49,6 +49,12 @@ var actions = {
 		var long = firstEntityValue(entities,"long");
 		var productName=firstEntityValue(entities,"productName");
 		var storeName=firstEntityValue(entities,"storeName");
+		var listItems=firstEntityValue(entities,"listItems");
+		if(listItems){
+			context.listItems=listItems.split(",");
+			console.log(listItems);
+		}
+
 
 		if(lat){
 			context.lat=lat;
@@ -108,12 +114,21 @@ var actions = {
 			}
 		};
 		FB.newMessage(context._fbid_, context.mallName,atts);
+		cb(context);
 	},
 	['findStore'](sessionId,context,cb){
 		context.storeLocation=context.storeName+" location";
 		FB.newMessage(context._fbid_, "its present in "+context.storeLocation);
+		cb(context);
 	},['getDeals'](sessionId,context,cb){
 		context.dealsResult=["","","",""];
+		cb(context);
+	},['addToList'](sessionId,context,cb){
+		FB.newMessage(context._fbid_, context.listItems);
+		cb(context);
+	},['showList'](sessionId,context,cb){
+		context.listProducts="blah blah blah";
+		cb(context);
 	}
 }
 
