@@ -112,7 +112,7 @@ var actions = {
 	['findStore'](sessionId,context,cb){
 		context.storeLocation=context.storeName+" location";
 		FB.newMessage(context._fbid_, "its present in "+context.storeLocation);
-	},[getDeals](sessionId,context,cb){
+	},['getDeals'](sessionId,context,cb){
 		context.dealsResult=["","","",""];
 	}
 }
