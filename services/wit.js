@@ -46,9 +46,14 @@ var actions = {
 	merge(sessionId, context, entities, message, cb) {
 
 		var lat = firstEntityValue(entities,"lat");
-		console.log(lat);
-		if(findItem){
-			context.findItem=findItem;
+		var long = firstEntityValue(entities,"long");
+
+
+		if(lat){
+			context.lat=lat;
+		}
+		if(long){
+			context.long=long;
 		}
 
 		cb(context)
@@ -60,9 +65,9 @@ var actions = {
 	['locateItem'](sessionId,context,cb){
 
 		cb(context)
-	},['getMall'](sessionId,context,entities,cb){
-		console.log(entities);
-		context.mallName="mantri";
+	},['getMall'](sessionId,context,cb){
+		//console.log(entities);
+		context.mallName="mantri"+context.lat+context.long;
 		cb(context);
 	}
 }
