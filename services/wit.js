@@ -60,7 +60,8 @@ var actions = {
 	['locateItem'](sessionId,context,cb){
 
 		cb(context)
-	},['getMall'](sessionId,context,cb){
+	},['getMall'](sessionId,context,entities,cb){
+		console.log(entities);
 		context.mallName="mantri";
 		cb(context);
 	}
