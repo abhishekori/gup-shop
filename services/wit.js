@@ -78,6 +78,17 @@ var actions = {
 		console.log(error.message)
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
+		var url;
+		request(url, function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				console.log(body) // Show the HTML for the Google homepage.
+				var atts={
+					"attachment":{
+						"type"
+					}
+				}
+			}
+		})
 		context.mallName="mantri"+context.lat+context.long;
 		FB.newMessage(context._fbid_, context.mallName)
 		cb(context);
@@ -94,22 +105,9 @@ var actions = {
 						"subtitle": "Element #1 of an hscroll",
 						"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 						"buttons": [{
-							"type": "web_url",
-							"url": "https://www.messenger.com",
-							"title": "web url"
-						}, {
 							"type": "postback",
 							"title": "Postback",
 							"payload": "Payload for first element in a generic bubble",
-						}],
-					}, {
-						"title": "Second card",
-						"subtitle": "Element #2 of an hscroll",
-						"image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-						"buttons": [{
-							"type": "postback",
-							"title": "Postback",
-							"payload": "Payload for second element in a generic bubble",
 						}],
 					}]
 				}
@@ -127,6 +125,14 @@ var actions = {
 		cb(context);
 	},['addToList'](sessionId,context,cb){
 		context.listProducts=context.listItems;
+		var url;
+		 request.post(url,{form:{list:context.listProducts}},function(err,httpResponse,body){
+			 console.log("addToList");
+			 console.log("err "+err);
+			 console.log("httpResponse "+httpResponse);
+			 console.log("body "+body);
+
+		 });
 		console.log(context.listProducts);
 
 		//FB.newMessage(context._fbid_,context.listProducts+"" );
