@@ -121,7 +121,7 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
-		var url="192.52.166.93:3000/add";
+		var url="http://192.52.166.93:3000/add";
 		request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
 			console.log("addItem");
 			console.log("err "+err);
