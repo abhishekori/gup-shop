@@ -58,31 +58,39 @@ app.post('/webhooks', function (req, res) {
       	console.log("err "+err);
       	console.log("httpResponse "+httpResponse);
       	console.log("body "+body);
-      var atts= {
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements": [{
-              "title": "First card",
-              "subtitle": "Element #1 of an hscroll",
-              "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-              "buttons": [{
-                "type": "postback",
-                "title": "done",
-                "payload": "done",
-              },{
-                type:"postback",
-                "title":"more",
-                payload: "id"
-              }],
-            }]
-          }
-        }
-      };
-      FB.newMessage(entry.sender.id,"the first item",atts);
+      if(body.status=="End")
+      {
+        FB.newMessage(entry.sender.id,"End of results");
 
-      });
+      }else{
+        var atts= {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "generic",
+              "elements": [{
+                "title": "First card",
+                "subtitle": "Element #1 of an hscroll",
+                "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                "buttons": [{
+                  "type": "postback",
+                  "title": "done",
+                  "payload": "done",
+                },{
+                  type:"postback",
+                  "title":"more",
+                  payload: "id"
+                }],
+              }]
+            }
+          }
+        };
+        FB.newMessage(entry.sender.id,"the first item",atts);
+
+
+
+      }
+            });
 
   }
   if (entry && entry.message) {
