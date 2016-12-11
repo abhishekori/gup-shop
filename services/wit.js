@@ -145,7 +145,8 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
-			var result=body;
+			var result=JSON.parse(body);
+			var value=result.value;
 
 			var atts= {
 				"attachment": {
@@ -153,9 +154,9 @@ var actions = {
 					"payload": {
 						"template_type": "generic",
 						"elements": [{
-							"title": result.name,
-							"subtitle": result.hrl,
-							"image_url": result.img,
+							"title": value.name,
+							"subtitle": value.hrl,
+							"image_url": value.img,
 							"buttons": [{
 								"type": "postback",
 								"title": "done",
