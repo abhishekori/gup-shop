@@ -127,9 +127,9 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
-			var result=JSON.parse(body);
-
-			context.itemsList=result.list;
+			//var result=JSON.parse(body);
+            //
+			context.itemsList="dfk";
 			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
 			cb(context);
 
