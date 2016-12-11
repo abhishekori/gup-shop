@@ -121,7 +121,7 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
-		var url="http://192.52.166.93:3000/addItem/"+context._fbid_+"/"+context.item+"/"+context.productQuantity;
+		var url="http://192.52.166.93:3000/add/"+context._fbid_+"/"+context.item+"/"+context.productQuantity;
 		var params={userId:context._fbid_,itemName:context.item,quantity:context.productQuantity};
 		var contentLength = params.length;
 		request(url,function(err,httpResponse,body){
@@ -173,33 +173,33 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
-			//var result=JSON.parse(body);
-			//var value=result.value;
-            //
-			//var atts= {
-			//	"attachment": {
-			//		"type": "template",
-			//		"payload": {
-			//			"template_type": "generic",
-			//			"elements": [{
-			//				"title": value.name,
-			//				"subtitle": value.hrl,
-			//				"image_url": value.img,
-			//				"buttons": [{
-			//					"type": "postback",
-			//					"title": "done",
-			//					"payload": "done",
-			//				},{
-			//					type:"postback",
-			//					"title":"more",
-			//					payload:"id"
-			//				}],
-			//			}]
-			//		}
-			//	}
-			//};
+			var result=JSON.parse(body);
+			var value=result.value;
+
+			var atts= {
+				"attachment": {
+					"type": "template",
+					"payload": {
+						"template_type": "generic",
+						"elements": [{
+							"title": value.name,
+							"subtitle": value.hrl,
+							"image_url": value.img,
+							"buttons": [{
+								"type": "postback",
+								"title": "done",
+								"payload": "done",
+							},{
+								type:"postback",
+								"title":"more",
+								payload:"id"
+							}],
+						}]
+					}
+				}
+			};
 			context.mallName="mantri"+context.lat+context.long;
-			FB.newMessage(context._fbid_,"the first item");
+			FB.newMessage(context._fbid_,"the first item",atts);
 
 
 
