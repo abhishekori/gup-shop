@@ -132,14 +132,14 @@ var actions = {
 			var result=JSON.parse(body);
 
 
-			context.mallName="mantri"+context.lat+context.long;
+			//context.mallName="mantri"+context.lat+context.long;
 			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added");
 
 
 
 		});
-		context.itemsList="dfk";
-		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
+			context.itemsList=" ";
+			//FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
