@@ -167,10 +167,6 @@ var actions = {
 								"type": "postback",
 								"title": "done",
 								"payload": "done",
-							},{
-								type:"postback",
-								"title":"more",
-								payload:"id"
 							}],
 						}]
 					}

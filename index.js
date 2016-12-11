@@ -47,7 +47,7 @@ app.post('/webhooks', function (req, res) {
       var url;
     var params={};
     if(messaging_events.postback.payload=="done"){
-      url="http://192.52.166.93:3000/next";
+      url="http://192.52.166.93:3000/next/"+entry.sender.id;
       //FB.newMessage(entry.sender.id,"next item");
       params={userId:entry.sender.id};
     }else{
@@ -56,11 +56,11 @@ app.post('/webhooks', function (req, res) {
       //FB.newMessage(entry.sender.id,"more abu");
     }
 
-    request.post(url,{form:params},function(err,httpResponse,body){
-      //	console.log("addItem");
-      	console.log("err "+err);
-      	console.log("httpResponse "+httpResponse);
-      	console.log("body "+body);
+    request(url,function(err,httpResponse,body){
+      console.log("addToList");
+      console.log("err "+err);
+      console.log("httpResponse "+httpResponse);
+      console.log("body "+body);
       var result=JSON.parse(body);
       if(result.status=="End")
       {
