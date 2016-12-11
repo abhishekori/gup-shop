@@ -43,13 +43,12 @@ app.post('/webhooks', function (req, res) {
 
   if(messaging_events){
       var url;
-    console.log("messaging events:"+messaging_events);
     if(messaging_events=="done"){
       url="next";
       FB.newMessage(entry.sender.id,"next item");
     }else{
       url="product:"+messaging_events;
-      FB.newMessage(entry.sender.id,"more about the above product");
+      FB.newMessage(entry.sender.id,"more abu");
     }
 
     //request.post(url,{form:{userId:context._fbid_,itemId:messaging_events}},function(err,httpResponse,body){
