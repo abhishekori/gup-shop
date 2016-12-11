@@ -153,11 +153,11 @@ var actions = {
 						"buttons": [{
 							"type": "postback",
 							"title": "done",
-							"payload": 1,
+							"payload": "done",
 						},{
 							type:"postback",
-							"title":"skip",
-							payload:0
+							"title":"more",
+							payload:"id"
 						}],
 					}]
 				}
