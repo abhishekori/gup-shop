@@ -128,10 +128,12 @@ var actions = {
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
 
+			context.itemsList="bread,butter,bun";
+			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
+			cb(context);
+
 		});
-		context.itemsList="bread,butter,bun";
-		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
-		cb(context);
+
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		var url;
