@@ -143,10 +143,10 @@ var actions = {
 		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
-		var url="http://192.52.166.93:3000/next";
+		var url="http://192.52.166.93:3000/next/"+context._fbid_;
 		var params={userId:context._fbid_};
 
-		request.post(url,{form:params},function(err,httpResponse,body){
+		request(url,function(err,httpResponse,body){
 			console.log("addToList");
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
