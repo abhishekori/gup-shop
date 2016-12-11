@@ -209,7 +209,23 @@ var actions = {
 		FB.newMessage(context._fbid_, "its present in "+context.storeLocation);
 		cb(context);
 	},['getDeals'](sessionId,context,cb){
-		context.dealsResult=["","","",""];
+		var url="http://192.52.166.93:3000/deals";
+		request(url,function(err,httpResponse,body){
+			console.log("addToList");
+			console.log("err "+err);
+			console.log("httpResponse "+httpResponse);
+			console.log("body "+body);
+			var result=JSON.parse(body);
+			context.dealsResult=result.Text;
+
+			//context.mallName="mantri"+context.lat+context.long;
+			FB.newMessage(context._fbid_,context.dealsResult);
+
+
+
+		});
+
+		//context.dealsResult=["","","",""];
 		cb(context);
 	},['addToList'](sessionId,context,cb){
 		context.listProducts=context.listItems;
