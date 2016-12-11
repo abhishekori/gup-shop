@@ -265,6 +265,7 @@ var actions = {
 		//	console.log("body "+body);
 		//
 		//});
+
 		context.itemsList="bread,butter,bun";
 		FB.newMessage(context._fbid_,context.reqItems+" added to "+context.reqName+"'s list. The list is " +JSON.stringify(context.itemsList));
 
