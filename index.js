@@ -53,7 +53,7 @@ app.post('/webhooks', function (req, res) {
       FB.newMessage(entry.sender.id,"more abu");
     }
 
-    request.post(url,{form:{userId:context._fbid_,itemId:messaging_events}},function(err,httpResponse,body){
+    request.post(url,{form:{userId:entry.sender.id,itemId:messaging_events}},function(err,httpResponse,body){
       //	console.log("addItem");
       	console.log("err "+err);
       	console.log("httpResponse "+httpResponse);
