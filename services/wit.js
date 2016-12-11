@@ -121,14 +121,14 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
-		var url;
-		//request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
-		//	console.log("addItem");
-		//	console.log("err "+err);
-		//	console.log("httpResponse "+httpResponse);
-		//	console.log("body "+body);
-        //
-		//});
+		var url="192.52.166.93:3000/add";
+		request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
+			console.log("addItem");
+			console.log("err "+err);
+			console.log("httpResponse "+httpResponse);
+			console.log("body "+body);
+
+		});
 		context.itemsList="bread,butter,bun";
 		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
 		cb(context);
@@ -253,9 +253,9 @@ var actions = {
 		//
 		//});
 		context.itemsList="bread,butter,bun";
-		FB.newMessage(context._fbid_,context.reqItems[0]+" added to "+context.reqName+"'s list. The list is " +JSON.stringify(context.itemsList));
+		FB.newMessage(context._fbid_,context.reqItems+" added to "+context.reqName+"'s list. The list is " +JSON.stringify(context.itemsList));
 
-
+cb(context);
 
 	}
 }
