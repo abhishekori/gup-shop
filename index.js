@@ -58,7 +58,8 @@ app.post('/webhooks', function (req, res) {
       	console.log("err "+err);
       	console.log("httpResponse "+httpResponse);
       	console.log("body "+body);
-      if(body.status=="End")
+      var result=JSON.parse(body);
+      if(result.status=="End")
       {
         FB.newMessage(entry.sender.id,"End of results");
 
