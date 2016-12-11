@@ -122,19 +122,24 @@ var actions = {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
 		var url="http://192.52.166.93:3000/add";
-		request.post(url,{form:{userId:context._fbid_,itemName:context.item,quantity:context.productQuantity}},function(err,httpResponse,body){
-			console.log("addItem");
-			console.log("err "+err);
-			console.log("httpResponse "+httpResponse);
-			console.log("body "+body);
-			//var result=JSON.parse(body);
-            //
-			context.itemsList="dfk";
-			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
-			cb(context);
-
+		var params={userId:context._fbid_,itemName:context.item,quantity:productQuantity};
+		request({
+			headers: {
+				'Content-Length': contentLength,
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			uri: url,
+			body: params,
+			method: 'POST'
+		}, function (err, res, body) {
+			//it works!
+			console.log(err);
+			console.log(res);
+			console.log(body)
 		});
-
+		context.itemsList="dfk";
+		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
+		cb(context);
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
 		var url="http://192.52.166.93:3000/next";
