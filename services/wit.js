@@ -137,38 +137,45 @@ var actions = {
 
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
-		var url;
-		//request(url, function (error, response, body) {
-		//	if (!error && response.statusCode == 200) {
-		//		console.log(body) // Show the HTML for the Google homepage.
-        //
-		//	}
-		//})
-		var atts= {
-			"attachment": {
-				"type": "template",
-				"payload": {
-					"template_type": "generic",
-					"elements": [{
-						"title": "First card",
-						"subtitle": "Element #1 of an hscroll",
-						"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-						"buttons": [{
-							"type": "postback",
-							"title": "done",
-							"payload": "done",
-						},{
-							type:"postback",
-							"title":"more",
-							payload:"id"
-						}],
-					}]
+		var url="https://192.52.166.93:3000/next";
+		var params={userId:context._fbid_};
+
+		request.post(url,{form:params},function(err,httpResponse,body){
+			console.log("addToList");
+			console.log("err "+err);
+			console.log("httpResponse "+httpResponse);
+			console.log("body "+body);
+			var result=JSON.parse(body);
+
+			var atts= {
+				"attachment": {
+					"type": "template",
+					"payload": {
+						"template_type": "generic",
+						"elements": [{
+							"title": result.name,
+							"subtitle": result.hrl,
+							"image_url": result.img,
+							"buttons": [{
+								"type": "postback",
+								"title": "done",
+								"payload": "done",
+							},{
+								type:"postback",
+								"title":"more",
+								payload:"id"
+							}],
+						}]
+					}
 				}
-			}
-		};
-		context.mallName="mantri"+context.lat+context.long;
-		FB.newMessage(context._fbid_,"the first item",atts);
-		//FB.newMessage(context._fbid_,"please send the quantity you picked up i ll update your ");
+			};
+			context.mallName="mantri"+context.lat+context.long;
+			FB.newMessage(context._fbid_,"the first item",atts);
+
+
+
+		});
+				//FB.newMessage(context._fbid_,"please send the quantity you picked up i ll update your ");
 		cb(context);
 
 	},['findProduct'](sessionId,context,cb){
