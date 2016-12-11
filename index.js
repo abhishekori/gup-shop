@@ -65,7 +65,7 @@ app.post('/webhooks', function (req, res) {
       var value=result.value;
       if(result.status=="End")
       {
-        FB.newMessage(entry.sender.id,"End of results");
+        FB.newMessage(entry.sender.id,"you have bought all the items the total cost is "+value.total+" Rs");
 
       }else{
         var atts= {
