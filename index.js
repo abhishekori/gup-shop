@@ -46,43 +46,44 @@ app.post('/webhooks', function (req, res) {
     console.log(JSON.stringify(messaging_events.postback));
       var url;
     if(messaging_events.postback.payload=="done"){
-      url="next";
+      url="http://192.52.166.93:3000/next";
       FB.newMessage(entry.sender.id,"next item");
     }else{
       url="product:"+messaging_events;
       FB.newMessage(entry.sender.id,"more abu");
     }
 
-    //request.post(url,{form:{userId:context._fbid_,itemId:messaging_events}},function(err,httpResponse,body){
-    //  //	console.log("addItem");
-      //	console.log("err "+err);
-      //	console.log("httpResponse "+httpResponse);
-      //	console.log("body "+body);
-      //
-      //});
-    var atts= {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "generic",
-          "elements": [{
-            "title": "First card",
-            "subtitle": "Element #1 of an hscroll",
-            "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-            "buttons": [{
-              "type": "postback",
-              "title": "done",
-              "payload": "done",
-            },{
-              type:"postback",
-              "title":"more",
-              payload: "id"
-            }],
-          }]
+    request.post(url,{form:{userId:context._fbid_,itemId:messaging_events}},function(err,httpResponse,body){
+      //	console.log("addItem");
+      	console.log("err "+err);
+      	console.log("httpResponse "+httpResponse);
+      	console.log("body "+body);
+      var atts= {
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "First card",
+              "subtitle": "Element #1 of an hscroll",
+              "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+              "buttons": [{
+                "type": "postback",
+                "title": "done",
+                "payload": "done",
+              },{
+                type:"postback",
+                "title":"more",
+                payload: "id"
+              }],
+            }]
+          }
         }
-      }
-    };
-    FB.newMessage(entry.sender.id,"the first item",atts);
+      };
+      FB.newMessage(entry.sender.id,"the first item",atts);
+
+      });
+
   }
   if (entry && entry.message) {
 
