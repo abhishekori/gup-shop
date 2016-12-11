@@ -145,31 +145,31 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
-			var result=JSON.parse(body);
-			var value=result.value;
-
-			var atts= {
-				"attachment": {
-					"type": "template",
-					"payload": {
-						"template_type": "generic",
-						"elements": [{
-							"title": value.name,
-							"subtitle": value.hrl,
-							"image_url": value.img,
-							"buttons": [{
-								"type": "postback",
-								"title": "done",
-								"payload": "done",
-							},{
-								type:"postback",
-								"title":"more",
-								payload:"id"
-							}],
-						}]
-					}
-				}
-			};
+			//var result=JSON.parse(body);
+			//var value=result.value;
+            //
+			//var atts= {
+			//	"attachment": {
+			//		"type": "template",
+			//		"payload": {
+			//			"template_type": "generic",
+			//			"elements": [{
+			//				"title": value.name,
+			//				"subtitle": value.hrl,
+			//				"image_url": value.img,
+			//				"buttons": [{
+			//					"type": "postback",
+			//					"title": "done",
+			//					"payload": "done",
+			//				},{
+			//					type:"postback",
+			//					"title":"more",
+			//					payload:"id"
+			//				}],
+			//			}]
+			//		}
+			//	}
+			//};
 			context.mallName="mantri"+context.lat+context.long;
 			FB.newMessage(context._fbid_,"the first item",atts);
 
