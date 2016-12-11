@@ -121,22 +121,44 @@ var actions = {
 	error(sessionId, context, error) {
 		console.log(error.message)
 	},['addItem'](sessionId,context,cb){
-		var url="http://192.52.166.93:3000/add";
+		var url="http://192.52.166.93:3000/addItem/"+context._fbid_+"/"+context.item+"/"+context.productQuantity;
 		var params={userId:context._fbid_,itemName:context.item,quantity:context.productQuantity};
 		var contentLength = params.length;
-		request({
-			headers: {
-				'Content-Length': contentLength,
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			uri: url,
-			body: params,
-			method: 'POST'
-		}, function (err, res, body) {
-			//it works!
-			console.log(err);
-			console.log(res);
-			console.log(body)
+		request(url,function(err,httpResponse,body){
+			console.log("addToList");
+			console.log("err "+err);
+			console.log("httpResponse "+httpResponse);
+			console.log("body "+body);
+			//var result=JSON.parse(body);
+			//var value=result.value;
+			//
+			//var atts= {
+			//	"attachment": {
+			//		"type": "template",
+			//		"payload": {
+			//			"template_type": "generic",
+			//			"elements": [{
+			//				"title": value.name,
+			//				"subtitle": value.hrl,
+			//				"image_url": value.img,
+			//				"buttons": [{
+			//					"type": "postback",
+			//					"title": "done",
+			//					"payload": "done",
+			//				},{
+			//					type:"postback",
+			//					"title":"more",
+			//					payload:"id"
+			//				}],
+			//			}]
+			//		}
+			//	}
+			//};
+			//context.mallName="mantri"+context.lat+context.long;
+			//FB.newMessage(context._fbid_,"the first item");
+
+
+
 		});
 		context.itemsList="dfk";
 		FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
@@ -177,7 +199,7 @@ var actions = {
 			//	}
 			//};
 			context.mallName="mantri"+context.lat+context.long;
-			FB.newMessage(context._fbid_,"the first item",atts);
+			FB.newMessage(context._fbid_,"the first item");
 
 
 
