@@ -45,7 +45,7 @@ app.post('/webhooks', function (req, res) {
 
     console.log(JSON.stringify(messaging_events.postback));
       var url;
-    if(messaging_events=="done"){
+    if(messaging_events.postback.payload=="done"){
       url="next";
       FB.newMessage(entry.sender.id,"next item");
     }else{
