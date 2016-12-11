@@ -127,9 +127,10 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
+			var result=JSON.parse(body);
 
-			context.itemsList="bread,butter,bun";
-			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.listProducts);
+			context.itemsList=result.list;
+			FB.newMessage(context._fbid_,context.productQuantity+" "+context.item+" added. The list is " +context.itemsList);
 			cb(context);
 
 		});
