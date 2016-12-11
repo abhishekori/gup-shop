@@ -62,6 +62,7 @@ app.post('/webhooks', function (req, res) {
       console.log("httpResponse "+httpResponse);
       console.log("body "+body);
       var result=JSON.parse(body);
+      var value=result.value;
       if(result.status=="End")
       {
         FB.newMessage(entry.sender.id,"End of results");
@@ -73,17 +74,13 @@ app.post('/webhooks', function (req, res) {
             "payload": {
               "template_type": "generic",
               "elements": [{
-                "title": "First card",
-                "subtitle": "Element #1 of an hscroll",
-                "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                "title": value.name,
+                "subtitle": value.hrl,
+                "image_url": value.img,
                 "buttons": [{
                   "type": "postback",
                   "title": "done",
                   "payload": "done",
-                },{
-                  type:"postback",
-                  "title":"more",
-                  payload: "id"
                 }],
               }]
             }
