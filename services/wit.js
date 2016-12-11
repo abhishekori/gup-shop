@@ -145,7 +145,7 @@ var actions = {
 			console.log("err "+err);
 			console.log("httpResponse "+httpResponse);
 			console.log("body "+body);
-			var result=JSON.parse(body);
+			var result=body;
 
 			var atts= {
 				"attachment": {
