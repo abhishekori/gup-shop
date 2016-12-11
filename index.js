@@ -45,15 +45,18 @@ app.post('/webhooks', function (req, res) {
 
     console.log(JSON.stringify(messaging_events.postback));
       var url;
+    var params={};
     if(messaging_events.postback.payload=="done"){
       url="http://192.52.166.93:3000/next";
-      FB.newMessage(entry.sender.id,"next item");
+      //FB.newMessage(entry.sender.id,"next item");
+      params={userId:entry.sender.id};
     }else{
-      url="product:"+messaging_events;
-      FB.newMessage(entry.sender.id,"more abu");
+      url="http://192.52.166.93:3000/product";
+      params={key:messaging_events.postback.payload};
+      //FB.newMessage(entry.sender.id,"more abu");
     }
 
-    request.post(url,{form:{userId:entry.sender.id,itemId:messaging_events}},function(err,httpResponse,body){
+    request.post(url,{form:params},function(err,httpResponse,body){
       //	console.log("addItem");
       	console.log("err "+err);
       	console.log("httpResponse "+httpResponse);
