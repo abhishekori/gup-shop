@@ -123,6 +123,7 @@ var actions = {
 	},['addItem'](sessionId,context,cb){
 		var url="http://192.52.166.93:3000/add";
 		var params={userId:context._fbid_,itemName:context.item,quantity:context.productQuantity};
+		var contentLength = params.length;
 		request({
 			headers: {
 				'Content-Length': contentLength,
