@@ -26,8 +26,16 @@ bread,salmon,turkey,eggs,pasta,rice,tomato sauce,vinegar,olive oil,milk,almonds,
           idea
           _____
           Ask family memebers for their list
-
-
+  curl -X POST -H "Content-Type: application/json" -d '{
+  curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+  {
+  "payload":"USER_DEFINED_PAYLOAD"
+  }
+  ]
+  }' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAFcEJsjavEBAHxbSlisdVOGX08RNf5l4fEeQZANo24QkWmJS751M3X3NZA8IPj84ymiazDGyIPrMLZAgrIjMe2lMk3ZBzAr6ZBI00YBweMacQL8hwFDZAiBfDrO2dg13BfYZCYCZB9ZC19n1dsE97kt5X3MYsrx8uNc7tZC4Xiq399wZDZD"
 
 
   Add family member chandy 1263235100413590

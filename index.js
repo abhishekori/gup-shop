@@ -46,6 +46,13 @@ app.post('/webhooks', function (req, res) {
     console.log(JSON.stringify(messaging_events.postback));
       var url;
     var params={};
+    if(messaging_events.postback.payload=="USER_DEFINED_PAYLOAD"){
+
+      FB.newMessage(entry.sender.id,"Hi I am GupShop your daily grocery and super market assistant");
+      FB.newMessage(entry.sender.id,"I can prepare your shopping list. Just say add 3 banana");
+      FB.newMessage(entry.sender.id,"once you are done with preparing the list just head to your local super market and send me your current location");
+      FB.newMessage(entry.sender.id,"I will identify the mall and show you all the items in your shopping list of their exact place and calculate your total");
+    }
     if(messaging_events.postback.payload=="done"){
       url="http://192.52.166.93:3000/next/"+entry.sender.id;
       //FB.newMessage(entry.sender.id,"next item");
