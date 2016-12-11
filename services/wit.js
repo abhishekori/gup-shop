@@ -137,7 +137,7 @@ var actions = {
 
 	},['getMall'](sessionId,context,cb){
 		//console.log(entities);
-		var url="https://192.52.166.93:3000/next";
+		var url="http://192.52.166.93:3000/next";
 		var params={userId:context._fbid_};
 
 		request.post(url,{form:params},function(err,httpResponse,body){
